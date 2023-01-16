@@ -1,0 +1,19 @@
+﻿@model DigitalBookStore.Web.Models.Book
+
+@{
+    ViewData["Title"] = "GetSubscribedBookContent";
+}
+
+
+
+<div>  
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+             @Model.Bookcontent
+        </dt>        
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

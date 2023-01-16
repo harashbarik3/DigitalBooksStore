@@ -1,0 +1,91 @@
+﻿@model DigitalBookStore.Web.Models.Register;
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/css/CustomeStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <content>
+        <!------ Include the above in your HEAD tag ---------->
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            <div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="~/images/bookPng1.png" alt="" />
+                        <h3>Welcome to Digital Book</h3>
+                        <p>You can read books online!</p>
+                        <input type="submit" value="Login" onclick="@("window.location.href='" + @Url.Action("Login", "Account") + "'");" /><br />
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">User Signup </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Register a User</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(e => e.FirstName, new { @class = "form-control", placeholder = "First Name *" })
+                                            @Html.ValidationMessageFor(e => e.FirstName)
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(e => e.LastName, new { @class = "form-control", placeholder = "Last Name *" })
+                                            @Html.ValidationMessageFor(e => e.LastName)
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(e => e.Password, new { id = "password", @class = "form-control", placeholder = "Password *" })
+                                            <span id="result"></span>
+                                            @Html.ValidationMessageFor(e => e.Password)
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(e => e.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password *" })
+                                            @Html.ValidationMessageFor(e => e.ConfirmPassword)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(e => e.Email, new { @class = "form-control", placeholder = "Your Email *" })
+                                            @Html.ValidationMessageFor(e => e.Email)
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(e => e.UserName, new { @class = "form-control", placeholder = "Your Username *" })
+                                            @Html.ValidationMessageFor(e => e.UserName)
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            @Html.DropDownListFor(m => m.UserType, new List<SelectListItem>
+                                        { new SelectListItem{Text="GUEST", Value="GUEST"},
+                                        new SelectListItem{Text="READER", Value="READER"},
+                                        new SelectListItem{Text="AUTHER", Value="AUTHER"},
+                                        new SelectListItem{Text="SYSADMIN", Value="SYSADMIN"}}, "Please select Role",new { @class = "form-control"})
+
+                                            
+                                        </div>
+
+                                        <input type="submit" class="btnRegister" value="Register" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </content>
+</body>
+</html>

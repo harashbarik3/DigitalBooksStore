@@ -1,0 +1,277 @@
+{
+  "Routes": [
+
+    {
+      "UpstreamPathTemplate": "/gateway/book",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/book/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/{id}",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/book/search",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/search",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/book/reader/{emailid}/books/{subscription_id}/read",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/readers/{emailid}/books/{subscription_id}/read",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    //https://localhost:7272/api/v1/digitalbooks/reader/testuserreader@gmail.com/book
+    {
+      "UpstreamPathTemplate": "/gateway/reader/{emailId}/books",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/reader/{emailId}/book",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/book/addBook/{author_id}",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/auther/{author_id}/books",
+      "DownstreamHttpMethod": "POST",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/updateBook/auther/{author_id}/books/{book_id}",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/auther/{author_id}/books/{book_id}",
+      "DownstreamHttpMethod": "PUT",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    //https://localhost:7272/api/v1/digitalbooks/auther/1369FF5C-F635-434B-88EB-63C6663CD159/book/block/9464DAEE-727D-46B5-9567-19E0FEA84C22
+    {
+      "UpstreamPathTemplate": "/gateway/blockBook/auther/{auther_id}/book/{book_id}",
+      "UpstreamHttpMethod": [ "PATCH" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/auther/{auther_id}/book/block/{book_id}",
+      "DownstreamHttpMethod": "PATCH",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/reader/{emailid}/book",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/reader/{emailId}/book",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    //https://localhost:7272/api/v1/digitalbooks/Subscription/{book_id}/subscribe/{userid}
+    {
+      "UpstreamPathTemplate": "/gateway/book/{book_id}/subscribe/{user_id}",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/Subscription/{book_id}/subscribe/{user_id}",
+      "DownstreamHttpMethod": "POST",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/reader/{emailid}/book/{subscription_id}/read",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/readers/{emailid}/books/{subscription_id}/read",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+
+    //subscription
+
+    {
+      "UpstreamPathTemplate": "/gateway/subscription/list",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/Subscription",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+
+    //category
+
+    {
+      "UpstreamPathTemplate": "/gateway/category",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/category",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+
+    //Publisher
+    {
+      "UpstreamPathTemplate": "/gateway/publisher",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/Publisher",
+      "DownstreamHttpMethod": "GET",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/publisher/add",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/Publisher",
+      "DownstreamHttpMethod": "POST",
+      "DownstreamScheme": "https",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ]
+    },
+    //User
+    //{
+    //  "UpstreamPathTemplate": "/gateway/users/signup",
+    //  "UpstreamHttpMethod": [ "POST" ],
+    //  "DownstreamPathTemplate": "/api/v1/digitalbooks/User/Sign-Up",
+    //  "DownstreamHttpMethod": "POST",
+    //  "DownstreamScheme": "https",
+    //  "RouteIsCaseSensitive": false,
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 7272
+    //    }
+    //  ]
+    //},
+    {
+      // "https": null, //localhost:7272/api/v1/digitalbooks/User/Sing-Up
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/User/Register",
+      "DownstreamSchema": "https",
+      "DownstreamHttpMethod": "POST",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/users/add",
+      "UpstreamHttpMethod": [ "Post" ]
+
+    },
+    {
+      // "https": null, //localhost:7272/api/v1/digitalbooks/User/Login
+      "DownstreamPathTemplate": "/api/v1/digitalbooks/User/Login",
+      "DownstreamSchema": "https",
+      "DownstreamHttpMethod": "POST",
+      "RouteIsCaseSensitive": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7272
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/users/Login",
+      "UpstreamHttpMethod": [ "Post" ]
+
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7128"
+  }
+}

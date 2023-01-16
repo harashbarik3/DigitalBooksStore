@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DigitalBookStore.Web.Models.Book>
+
+@{
+    ViewData["Title"] = "GetAllSubscribedBooks";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Bookname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookcontent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoryname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publishername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisheddate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auther)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bookcontent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoryname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publishername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisheddate)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.Auther)
+            </td> 
+            
+        </tr>
+}
+    </tbody>
+</table>

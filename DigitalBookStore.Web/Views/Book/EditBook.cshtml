@@ -1,0 +1,64 @@
+﻿@model DigitalBookStore.Web.Models.Book
+@inject IHttpContextAccessor context;
+
+@{
+    ViewData["Title"] = "EditBook";
+}
+
+<h1>EditBook</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBook">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" value=@Model.Id disabled class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bookname" class="control-label"></label>
+                <input asp-for="Bookname" value=@Model.Bookname class="form-control" />
+                <span asp-validation-for="Bookname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bookcontent" class="control-label"></label>
+                <input asp-for="Bookcontent" value=@Model.Bookcontent class="form-control" />
+                <span asp-validation-for="Bookcontent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" value=@Model.Price class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categoryname" class="control-label"></label>
+                <input asp-for="Categoryname" value=@Model.Categoryname class="form-control" />
+                <span asp-validation-for="Categoryname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publishername" class="control-label"></label>
+                <input asp-for="Publishername" value=@Model.Publishername class="form-control" />
+                <span asp-validation-for="Publishername" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisheddate" class="control-label"></label>
+                <input asp-for="Publisheddate" value=@Model.Publisheddate class="form-control" />
+                <span asp-validation-for="Publisheddate" class="text-danger"></span>
+            </div>           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

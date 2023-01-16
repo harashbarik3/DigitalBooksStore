@@ -1,0 +1,125 @@
+﻿@inject IHttpContextAccessor _context;
+@model IEnumerable<Book>
+@{
+    ViewData["Title"] = "Index";   
+}
+
+<h5 class="text-center">Welcome to digital book store</h5>
+<br />
+@if (_context.HttpContext.Session.GetString("userRole").ToLower()=="auther")
+            {
+<p>
+    
+    <input type="button" class="btn btn-outline-primary" value="Create Book" onclick="@("window.location.href='" + @Url.Action("AddBook", "Book") + "'");" />
+</p>
+            }
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find book: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-light" />  |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortorder="@ViewData["NameSortParam"]">@Html.DisplayNameFor(model => model.Bookname)</a>
+            </th>
+            @if (_context.HttpContext.Session.GetString("userRole").ToLower()=="auther")
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Bookcontent)
+                </th>
+            }            
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Categoryname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publishername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisheddate)
+            </th>           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @if (_context.HttpContext.Session.GetString("userRole").ToLower() == "reader")
+                {
+            <td>
+                
+                    @Html.ActionLink($"{item.Bookname}", "GetSubscribedBookContent", new { bookid = item.Id })
+            </td>
+                }@if(_context.HttpContext.Session.GetString("userRole").ToLower() == "auther"){
+                    <td>
+                         @Html.DisplayFor(modelItem => item.Bookname)
+                
+                     </td>
+                }
+                @if (_context.HttpContext.Session.GetString("userRole").ToLower() == "auther")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bookcontent)
+                    </td>
+                }
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoryname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publishername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisheddate)
+            </td>
+            @if (_context.HttpContext.Session.GetString("userRole").ToLower() == "auther")
+                {
+            <td>
+                @Html.ActionLink("Edit", "EditBook", new { id = item.Id })                   
+            </td>
+            <td>
+                    @Html.ActionLink("Block","BlockUnblockBook",new{bookid=item.Id,isBlock=item.IsBlocked})
+            </td>
+                }
+                @if (_context.HttpContext.Session.GetString("userRole").ToLower() == "reader")
+                {
+                    <td>
+                        @Html.ActionLink("Subscribe","SubscribeBook",new{bookid=item.Id})
+                    </td>
+                }
+                
+            
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@*<div class="row row-cols-1 row-cols-md-3 g-4">
+@foreach (var item in Model)
+{
+    <div class="col">
+        <div class="card h-100">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Bookname)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Bookcontent)</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+    </div>
+}
+</div>*@

@@ -1,0 +1,64 @@
+﻿@model DigitalBookStore.Web.Models.Login;
+
+@{
+    ViewBag.Title = "Login";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="~/css/CustomeStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <!------ Include the above in your HEAD tag ---------->
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            <div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="~/images/bookPng1.png" alt="" />
+                        <h3>Welcome to DigitalBook</h3>
+                        <p>You can register and get some exiting books!</p>
+                        <input type="submit" value="Register" onclick="@("window.location.href='" + @Url.Action("Register", "Account") + "'");" /><br />
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">User Login</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Login a User</h3>
+                                <div class="row register-form">
+                                    <h6 class="text-success text-center">@TempData["successMessage"]</h6>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(e => e.Username, new { @class = "form-control", placeholder = "User Name *" })
+                                            @Html.ValidationMessageFor(e => e.Username,"",new { @class ="text-danger"})
+                                           
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(e => e.Password, new { id = "password", @class = "form-control", placeholder = "Password *" })
+                                            <span id="result"></span>
+                                            @Html.ValidationMessageFor(e => e.Password,"",new { @class ="text-danger"})                                            
+                                        </div>
+                                        <input type="submit" class="btnRegister" value="Login" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+
+
+</body>
+</html>
